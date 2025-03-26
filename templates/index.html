@@ -1,1 +1,200 @@
-<h1>Welcome to the Home Page</h1>
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>EduScore AI</title>
+    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+    <link rel = "apple-touch-icon" sizes = "180x180" href = "apple-touch-icon.png">
+    <link rel = "icon" type = "image/png" sizes = "32x32" href = "favicon-32x32.png">
+    <link rel = "icon" type = "image/png" sizes = "16x16" href = "favicon-16x16.png">
+    <link rel = "manifest" href = "site.webmanifest">
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel = "stylesheet">
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel = "stylesheet">
+    <style>
+        :root {
+            --bg-dark-primary: #121212;
+            --bg-dark-secondary: #1E1E1E;
+            --accent-primary: #6a11cb;
+            --accent-secondary: #2575fc;
+        }
+
+        body {
+            background-color: var(--bg-dark-primary);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            perspective: 1000px;
+        }
+
+        /* Enhanced Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--bg-dark-primary), var(--bg-dark-secondary));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            filter: blur(100px);
+            opacity: 0.7;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        /* Advanced Particle Effect */
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 50%;
+            animation: float 10s infinite, pulse 3s infinite alternate;
+            box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
+        }
+
+        @keyframes float {
+            0% {transform: translateY(0) rotate(0deg);}
+            50% {transform: translateY(-30px) rotate(180deg);}
+            100% {transform: translateY(0) rotate(360deg);}
+        }
+
+        @keyframes pulse {
+            0% {transform: scale(1);}
+            100% {transform: scale(1.2);}
+        }
+
+        /* 3D Hover Effect for Cards */
+        .feature-card {
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .feature-card:hover {
+            transform: 
+                scale(1.05) 
+                rotateX(10deg) 
+                rotateY(-10deg);
+            box-shadow: 0 20px 40px rgba(106, 17, 203, 0.3);
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 640px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Glow Effect */
+        .glow-container {
+            position: relative;
+        }
+
+        .glow-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, 
+                rgba(106, 17, 203, 0.3) 0%, 
+                rgba(106, 17, 203, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: glow 5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body class = "min-h-screen relative">
+    <!-- Animated Background -->
+    <div class = "bg-animation"></div>
+
+    <!-- Particle Effect Script -->
+    <script>
+        function createParticles() {
+            const particleContainer = document.body;
+            for (let i = 0; i < 75; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = `${Math.random() * 15}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${10 + Math.random() * 15}s`;
+                particle.style.opacity = Math.random() * 0.5;
+                particleContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+    </script>
+
+    <div class = "container mx-auto px-4 relative z-10">
+        <div class = "glow-container">
+            <header class = "text-center py-16">
+                <h1 class = "text-6xl font-bold mb-6 gradient-text">
+                    Academic Performance Indicator
+                </h1>
+                <p class = "text-xl text-gray-300 max-w-2xl mx-auto mb-12">
+                    Unlock your academic potential with our advanced predictive analytics. 
+                    Gain insights into your exam performance and discover pathways to success.
+                </p>
+            </header>
+        </div>
+
+        <main class = "grid md:grid-cols-3 gap-8">
+            <!-- Feature Cards -->
+            <div class = "feature-card bg-gray-800 bg-opacity-50 p-6 rounded-2xl">
+                <div class = "text-4xl mb-4 gradient-text">🎯</div>
+                <h2 class = "text-2xl font-semibold mb-4">Precise Predictions</h2>
+                <p class = "text-gray-300">
+                    Utilize machine learning algorithms to predict math scores with high accuracy.
+                </p>
+            </div>
+
+            <div class = "feature-card bg-gray-800 bg-opacity-50 p-6 rounded-2xl">
+                <div class = "text-4xl mb-4 gradient-text">📊</div>
+                <h2 class = "text-2xl font-semibold mb-4">Comprehensive Analysis</h2>
+                <p class = "text-gray-300">
+                    In-depth insights into factors affecting academic performance.
+                </p>
+            </div>
+
+            <div class = "feature-card bg-gray-800 bg-opacity-50 p-6 rounded-2xl">
+                <div class = "text-4xl mb-4 gradient-text">🚀</div>
+                <h2 class = "text-2xl font-semibold mb-4">Personalized Guidance</h2>
+                <p class = "text-gray-300">
+                    Tailored recommendations to improve your exam performance.
+                </p>
+            </div>
+        </main>
+
+        <div class = "text-center mt-16">
+            <a href = "/predictdata" 
+               class = "glow-btn inline-block bg-gradient-to-r from-purple-600 to-blue-500 
+                       text-white font-bold py-4 px-8 rounded-full text-xl">
+                Start Prediction
+            </a>
+        </div>
+    </div>
+</body>
+</html>
